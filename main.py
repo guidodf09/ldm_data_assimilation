@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import pandas as pd
 from torch.utils.data import Dataset, DataLoader, random_split
-from utils import model2tricat  # keep your custom functions
+from utils import model2tricat 
 from models_impr import GeoRatesDataset, GeoToRatesModel
 from train_impr import train_model
 import time
