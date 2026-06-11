@@ -107,18 +107,7 @@ def main(mode="train"):
         best_params = study.best_trial.params
 
     elif mode == 'train':
-        # best_params = {
-        #     'conv_channels': (32, 64, 128, 256),
-        #     'latent_dim': 1024,
-        #     'lstm_hidden_size': 64,
-        #     'lstm_layers': 1,
-        #     'bidirectional': True,
-        #     'lr': 0.004892917497345605,
-        #     'weight_decay': 3.25e-6,
-        #     'dropout': 0.1232,
-        #     'use_huber': True
-        # }
-        
+
         best_params = {'conv_channels': (16, 32, 64, 128),
                       'latent_dim': 512,
                       'lstm_hidden_size': 64,
