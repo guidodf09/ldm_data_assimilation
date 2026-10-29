@@ -1,0 +1,17 @@
+# Training of the surrogate (scripts/train_surrogate.py).
+# Architecture from base.yaml -> surrogate; outputs written to base.yaml -> paths.surrogate_weights /
+# paths.surrogate_scalers (losses and split indices next to them).
+
+seed: 42                          # data shuffle + 80/10/10 split (same as scripts/compute_surrogate_error.py)
+split: [0.8, 0.1, 0.1]
+
+batch_size: 16
+num_epochs: 100
+patience: 10                      # early stopping on validation loss
+lr: 0.002038540481683897          # best HPO values
+weight_decay: 2.1669376391175675e-06
+grad_clip: 1.0                    # max gradient norm; null -> no clipping
+huber_delta: 1.0                  # HuberLoss(delta); null -> MSE
+lr_scheduler:                     # ReduceLROnPlateau on validation loss
+  factor: 0.5
+  patience: 5

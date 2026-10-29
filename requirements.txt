@@ -1,0 +1,10 @@
+numpy
+scipy
+scikit-learn      # use the version the scalers were pickled with
+joblib
+h5py
+pyyaml
+torch
+monai
+monai-generative  # provides `generative` (AutoencoderKL, DiffusionModelUNet, DDIMScheduler)
+particles         # SMC resampling / ESS (Chopin & Papaspiliopoulos)

@@ -1,0 +1,12 @@
+# large files downloaded from Drive (see data/link_to_data.md, weights/link_to_models.md)
+data/*.h5
+data/rates/
+weights/**/*.pt
+weights/**/*.pth
+weights/**/*.pkl
+weights/**/*.joblib
+weights/**/*.npy
+weights/**/*.npz
+
+results/
+__pycache__/

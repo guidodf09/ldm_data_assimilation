@@ -1,0 +1,25 @@
+method: mcmc
+
+# Chains start from independent prior draws csi ~ N(0, I).
+
+mcmc:
+  num_chains: 5
+  beta: 0.05                      # pCN step size
+  temperature: 1.0
+  max_iter: 600000                # per chain; stops earlier once converged
+  burn_in: 5000
+  thin: 100                       # keep latents/rates every `thin` iterations (posterior pool)
+  print_every: 500                # diagnostics interval (after burn-in)
+  save_every: 5000                # checkpoint interval
+  resume: false                   # continue from <run_dir>/checkpoint.npz if present
+
+  convergence:                    # Stan diagnostics (Vehtari et al. 2021)
+    n_monitor: 100                # latent coordinates monitored (null = all)
+    rhat_threshold: 1.01
+    min_bulk_ess: 400
+    min_tail_ess: 400
+    use_rhat: true                # R-hat on monitored latents + log-likelihood
+    use_ess: true                 # bulk/tail ESS on the same
+    n_consecutive_pass: 5
+
+  n_posterior: 1000               # samples drawn from the post-burn-in pool and saved

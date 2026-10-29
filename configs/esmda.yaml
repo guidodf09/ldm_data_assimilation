@@ -1,0 +1,12 @@
+method: esmda
+
+esmda:
+  nr: 1000                        # ensemble size
+  na: 10                          # data assimilations
+  alpha: null                     # null -> [na] * na (constant inflation); or give a list (sum of 1/alpha = 1)
+  dummy_params: 27                # extra N(0,1) dummy parameters updated with the latents (0 = off); 3^3 in the notebook
+  localization:
+    method: pol                   # none | pol | cbl | cbl-soft
+    eps: 1.0e-3                   # POL truncation, R = 0 where |c| < eps sqrt(c_ii c_jj) (Lacerda: eps <= 1e-2)
+    theta: 0.01                   # correlation threshold (cbl, cbl-soft)
+    gamma: 1.2                    # exponent (cbl-soft)
