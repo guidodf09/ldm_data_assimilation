@@ -1,0 +1,85 @@
+Epoch 1/1000 | Train Loss: 0.260236 | Val Loss: 0.287499
+Epoch 2/1000 | Train Loss: 0.209018 | Val Loss: 0.223215
+Epoch 3/1000 | Train Loss: 0.203968 | Val Loss: 0.225947
+Epoch 4/1000 | Train Loss: 0.200904 | Val Loss: 0.230384
+Epoch 5/1000 | Train Loss: 0.201909 | Val Loss: 0.221097
+Epoch 6/1000 | Train Loss: 0.198836 | Val Loss: 0.215912
+Epoch 7/1000 | Train Loss: 0.198219 | Val Loss: 0.215827
+Epoch 8/1000 | Train Loss: 0.197040 | Val Loss: 0.246798
+Epoch 9/1000 | Train Loss: 0.194098 | Val Loss: 0.224419
+Epoch 10/1000 | Train Loss: 0.195073 | Val Loss: 0.218619
+Epoch 11/1000 | Train Loss: 0.196263 | Val Loss: 0.217684
+Epoch 12/1000 | Train Loss: 0.191820 | Val Loss: 0.225264
+Epoch 13/1000 | Train Loss: 0.193430 | Val Loss: 0.227689
+Epoch 14/1000 | Train Loss: 0.193141 | Val Loss: 0.216289
+Epoch 15/1000 | Train Loss: 0.191938 | Val Loss: 0.217956
+Epoch 16/1000 | Train Loss: 0.191874 | Val Loss: 0.236628
+Epoch 17/1000 | Train Loss: 0.186504 | Val Loss: 0.236496
+Epoch 00018: reducing learning rate of group 0 to 1.0193e-03.
+Epoch 18/1000 | Train Loss: 0.190216 | Val Loss: 0.218912
+Epoch 19/1000 | Train Loss: 0.181035 | Val Loss: 0.228333
+Epoch 20/1000 | Train Loss: 0.177022 | Val Loss: 0.225518
+Epoch 21/1000 | Train Loss: 0.178681 | Val Loss: 0.239805
+Epoch 22/1000 | Train Loss: 0.174491 | Val Loss: 0.212289
+Epoch 23/1000 | Train Loss: 0.174339 | Val Loss: 0.276857
+Epoch 24/1000 | Train Loss: 0.170561 | Val Loss: 0.286201
+Epoch 25/1000 | Train Loss: 0.172784 | Val Loss: 0.309880
+Epoch 26/1000 | Train Loss: 0.170198 | Val Loss: 0.215844
+Epoch 27/1000 | Train Loss: 0.163325 | Val Loss: 0.210566
+Epoch 28/1000 | Train Loss: 0.165343 | Val Loss: 0.268721
+Epoch 29/1000 | Train Loss: 0.165162 | Val Loss: 0.255752
+Epoch 30/1000 | Train Loss: 0.157552 | Val Loss: 0.273388
+Epoch 31/1000 | Train Loss: 0.159032 | Val Loss: 0.293489
+Epoch 32/1000 | Train Loss: 0.156358 | Val Loss: 0.303332
+Epoch 33/1000 | Train Loss: 0.153956 | Val Loss: 0.237191
+Epoch 34/1000 | Train Loss: 0.144216 | Val Loss: 0.346145
+Epoch 35/1000 | Train Loss: 0.139124 | Val Loss: 0.236306
+Epoch 36/1000 | Train Loss: 0.142341 | Val Loss: 0.347464
+Epoch 37/1000 | Train Loss: 0.143312 | Val Loss: 0.501562
+Epoch 00038: reducing learning rate of group 0 to 5.0964e-04.
+Epoch 38/1000 | Train Loss: 0.132786 | Val Loss: 0.526476
+Epoch 39/1000 | Train Loss: 0.122027 | Val Loss: 0.253437
+Epoch 40/1000 | Train Loss: 0.115147 | Val Loss: 0.348787
+Epoch 41/1000 | Train Loss: 0.117002 | Val Loss: 0.441004
+Epoch 42/1000 | Train Loss: 0.109104 | Val Loss: 0.242870
+Epoch 43/1000 | Train Loss: 0.108057 | Val Loss: 0.357058
+Epoch 44/1000 | Train Loss: 0.103100 | Val Loss: 0.556495
+Epoch 45/1000 | Train Loss: 0.103522 | Val Loss: 0.476185
+Epoch 46/1000 | Train Loss: 0.102282 | Val Loss: 0.369318
+Epoch 47/1000 | Train Loss: 0.100545 | Val Loss: 0.380966
+Epoch 48/1000 | Train Loss: 0.091402 | Val Loss: 0.266535
+Epoch 00049: reducing learning rate of group 0 to 2.5482e-04.
+Epoch 49/1000 | Train Loss: 0.094923 | Val Loss: 0.371588
+Epoch 50/1000 | Train Loss: 0.085813 | Val Loss: 0.302473
+Epoch 51/1000 | Train Loss: 0.086998 | Val Loss: 0.240116
+Epoch 52/1000 | Train Loss: 0.086333 | Val Loss: 0.381934
+Epoch 53/1000 | Train Loss: 0.082711 | Val Loss: 0.311910
+Epoch 54/1000 | Train Loss: 0.081584 | Val Loss: 0.355504
+Epoch 55/1000 | Train Loss: 0.077225 | Val Loss: 0.241194
+Epoch 56/1000 | Train Loss: 0.078279 | Val Loss: 0.248959
+Epoch 57/1000 | Train Loss: 0.081524 | Val Loss: 0.278509
+Early stopping triggered after 57 epochs
+Trained model saved to /oak/stanford/groups/lou/3d_surrogate_hierarchical_guido_wenchao/surrogate_model_channel/case0/model_trained.pth
+Training complete.
+Total training time: 331.19 seconds
+Average time per epoch: 5.81 seconds
+Tue Jun  9 10:49:12 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.163.01             Driver Version: 550.163.01     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:4D:00.0 Off |                    0 |
+| N/A   38C    P0             85W /  360W |       1MiB /  40960MiB |      1%   E. Process |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+

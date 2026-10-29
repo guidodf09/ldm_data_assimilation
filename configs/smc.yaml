@@ -1,9 +1,0 @@
-method: smc
-
-smc:
-  n_particles: 1000
-  ess_min: 0.5                    # next tempering exponent keeps ESS = ess_min * N
-  max_stages: 100
-  resampling: systematic
-  len_chain: 36                   # pCN steps per move = len_chain - 1
-  beta: 0.09                      # pCN step size

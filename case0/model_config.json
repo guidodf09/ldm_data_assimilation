@@ -1,0 +1,17 @@
+{
+    "conv_channels": [
+        16,
+        32,
+        64,
+        128
+    ],
+    "latent_dim": 512,
+    "lstm_hidden_size": 64,
+    "lstm_layers": 1,
+    "bidirectional": false,
+    "dropout": 0.1155930716554599,
+    "lr": 0.002038540481683897,
+    "weight_decay": 2.1669376391175675e-06,
+    "use_huber": true,
+    "grad_clip": 1.0
+}
