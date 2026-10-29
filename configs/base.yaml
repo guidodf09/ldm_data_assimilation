@@ -1,0 +1,65 @@
+# Shared setup for all methods (ESMDA, MCMC, SMC).
+# Method configs (esmda.yaml, mcmc.yaml, smc.yaml) are merged on top of this file.
+# Any value can be overridden from the command line, e.g. --set case.id_true=81
+
+device: cuda
+seed: 0
+
+case:
+  name: case88
+  id_true: 88                     # index of the true model in the shuffled dataset (seed 0)
+  # "True" data from the reference simulator run, shape (1, 30, 15)
+  true_data: /oak/stanford/groups/lou/gdifede/tnav/simulator_validation_single_88/results/all_data_all_times_true.npy
+
+paths:
+  geomodels_h5: /oak/stanford/groups/lou/gdifede/3d_datasets/geomodels_128_paper.h5
+  rates_dir: /oak/stanford/groups/lou/gdifede/3d_surrogate_data/   # all_data_all_times_ok_{1,2,3}.npy (only for C_surr)
+  ldm_dir: /oak/stanford/groups/lou/gdifede/tnav/esmda/4_Wenchao/   # trained_vae.pt, trained_unet.pt, *_properties.pkl
+  surrogate_weights: /oak/stanford/groups/lou/gdifede/3d_surrogate/case0/model_trained.pth
+  rate_scaler: /oak/stanford/groups/lou/gdifede/3d_surrogate/rate_scaler.pkl
+  model_scaler: /oak/stanford/groups/lou/gdifede/3d_surrogate/model_scaler.pkl
+  surrogate_error: data/C_surr_5times.npy       # made by scripts/compute_surrogate_error.py
+  results_dir: results
+
+grid:
+  nx: 128
+  ny: 128
+  nz: 32
+
+ldm:
+  latent_shape: [16, 16, 4]
+  n_steps: 20                     # DDIM steps
+  batch_size: 20                  # models generated per batch (GPU memory)
+  scale_factor: 0.9689075946807861
+  thresholds: [0.25, 0.8]         # facies cut-offs -> {0, 0.5, 1}
+  unet_num_res_blocks: 1          # overrides the value stored in unet_properties.pkl (as in training)
+  scheduler:
+    num_train_timesteps: 1000
+    schedule: scaled_linear_beta
+    beta_start: 0.0015
+    beta_end: 0.0195
+
+surrogate:                        # best hyperparameters from the HPO
+  conv_channels: [32, 64, 128, 256]
+  latent_dim: 1024
+  lstm_hidden_size: 64
+  lstm_layers: 1
+  bidirectional: true
+  dropout: 0.123213575873467
+  time_steps: 30
+  n_qoi: 15
+  batch_size: 100
+
+observations:
+  all_times: [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750,
+              800, 850, 900, 950, 1000, 1050, 1100, 1150, 1200, 1250, 1300, 1350, 1400, 1450, 1500]
+  n_hm_times: 5                   # first 5 report times are history-matched (50-250 d)
+  qoi: [P1:WAT, P2:WAT, P3:WAT, P4:WAT, P5:WAT, P6:WAT,
+        P1:OIL, P2:OIL, P3:OIL, P4:OIL, P5:OIL, P6:OIL,
+        I1:WAT, I2:WAT, I3:WAT]
+  error_frac: 0.05                # Cd = diag((error_frac * d_true)^2)
+  add_noise: true                 # d_obs = d_true + N(0, Cd)
+  noise_seed: 42
+  use_surrogate_error: true       # likelihood covariance = Cd + C_surr
+
+prior_samples: 0                  # >0: also save rates/models of this many prior samples
