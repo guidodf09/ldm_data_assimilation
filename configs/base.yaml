@@ -7,9 +7,8 @@ seed: 0
 
 case:
   name: case88
-  id_true: 88                     # index of the true model in the shuffled dataset (seed 0)
-  # "True" data from the reference simulator run, shape (1, 30, 15)
-  true_data: /oak/stanford/groups/lou/gdifede/tnav/simulator_validation_single_88/results/all_data_all_times_true.npy
+  true_model: data/true88_model.npy
+  true_rates: /oak/stanford/groups/lou/gdifede/tnav/simulator_validation_single_88/results/all_data_all_times_true.npy
 
 paths:
   geomodels_h5: /oak/stanford/groups/lou/gdifede/3d_datasets/geomodels_128_paper.h5
