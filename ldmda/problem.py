@@ -6,8 +6,6 @@ Data vector ordering is QoI-major everywhere: d[q * n_times + t]
 import numpy as np
 from scipy import linalg
 
-from .utils import model2tricat
-
 
 def rates_to_d(rates, n_times):
     """rates (n, T_all, n_qoi) -> d (n_times * n_qoi, n), QoI-major."""
@@ -19,7 +17,7 @@ class Observations:
     def __init__(self, cfg):
         o = cfg["observations"]
         self.n_times = o["n_hm_times"]
-        self.true_rates = np.load(cfg["case"]["true_data"])[0]            # (T_all, n_qoi)
+        self.true_rates = np.squeeze(np.load(cfg["case"]["true_rates"]))   # (T_all, n_qoi)
         self.d_true = rates_to_d(self.true_rates[None], self.n_times)     # (nd, 1)
         self.nd = self.d_true.shape[0]
 
@@ -69,14 +67,3 @@ class ForwardModel:
         m = self.ldm.generate(csi)
         rates = self.surrogate.predict(m)
         return m, rates, rates_to_d(rates, self.n_times)
-
-
-def load_true_model(cfg):
-    """True geomodel: index id_true of the dataset shuffled with seed 0."""
-    import h5py
-
-    with h5py.File(cfg["paths"]["geomodels_h5"], "r") as f:
-        dset = f["data"]
-        idx = np.random.RandomState(0).permutation(dset.shape[0])[cfg["case"]["id_true"]]
-        m = dset[idx, 0] / 255.0
-    return model2tricat(m[None], *cfg["ldm"]["thresholds"])
