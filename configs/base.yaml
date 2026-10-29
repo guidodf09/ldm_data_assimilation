@@ -1,14 +1,14 @@
 # Shared setup for all methods (ESMDA, MCMC, SMC).
 # Method configs (esmda.yaml, mcmc.yaml, smc.yaml) are merged on top of this file.
-# Any value can be overridden from the command line, e.g. --set case.id_true=81
+# Any value can be overridden from the command line, e.g. --set case.name=true2
 
 device: cuda
 seed: 0
 
 case:
-  name: case88
-  true_model: data/true88_model.npy
-  true_rates: /oak/stanford/groups/lou/gdifede/tnav/simulator_validation_single_88/results/all_data_all_times_true.npy
+  name: true1                     # results go to results/<name>_<method>/
+  true_model: data/true1_model.npy   # (128, 128, 32) facies
+  true_rates: data/true1_rates.npy   # (30, 15) true well rates
 
 paths:
   geomodels_h5: /oak/stanford/groups/lou/gdifede/3d_datasets/geomodels_128_paper.h5
