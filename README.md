@@ -35,6 +35,7 @@ Three algorithms run on this shared setup:
   - `train_surrogate.py`: (re)trains the flow surrogate
 - `data/`: geomodel dataset, simulated rates, and true models/rates for Cases 1–3 (see `data/link_to_data.md`)
 - `weights/`: trained VAE, U-net and surrogate (see `weights/link_to_models.md`)
+- `template_folder/`: simulation deck used to generate the training and true rates (`test.DATA`, `KR.INC`; 128×128×32 grid, 3 injectors, 6 producers, BHP control, 30 × 50-day report steps). `PERMX.INC` and `PORO.INC` are written per geomodel
 - `run.py`: entry point
 
 ## Quick Start
