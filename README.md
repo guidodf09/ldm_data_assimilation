@@ -7,7 +7,12 @@ Code for "Data assimilation for subsurface flow using latent diffusion model par
   <img src="./pics/hm_Field_oil_mcmc_case88.gif?raw=true" width="32%"/>
   <img src="./pics/hm_Field_oil_smc_case88.gif?raw=true" width="32%"/>
 </p>
-<p align="center"><em>Case 1 field oil rate history matching: ESMDA, MCMC and SMC (left to right)</em></p>
+<p align="center">
+  <img src="./pics/hm_models_L0_esmda_case88.gif?raw=true" width="32%"/>
+  <img src="./pics/hm_models_L0_mcmc_case88.gif?raw=true" width="32%"/>
+  <img src="./pics/hm_models_L0_smc_case88.gif?raw=true" width="32%"/>
+</p>
+<p align="center"><em>Case 1 history matching with ESMDA, MCMC and SMC (left to right): field oil rate (top) and posterior geomodels (bottom)</em></p>
 
 ## Summary
 We compare data assimilation (DA) algorithms for large 3D channelized geomodels (128×128×32, channel-levee-mud facies) with uncertain geological scenario parameters (mud fraction, channel orientation and width). Geomodels are parameterized with a pretrained 3D latent diffusion model (3D-LDM, [ldm_3d_geomodel](https://github.com/guidodf09/ldm_3d_geomodel)), which maps a 1024-dimensional Gaussian latent variable to a full facies model. DA is performed on the latent variable, so posterior geomodels are always geologically realistic.
