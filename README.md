@@ -1,16 +1,16 @@
-# Latent-Space Data Assimilation with a 3D Latent Diffusion Model
+﻿# Latent-Space Data Assimilation with a 3D Latent Diffusion Model
 
 Code for "Data assimilation for subsurface flow using latent diffusion model parameterization: performance of ensemble-Kalman and Monte Carlo techniques" (G. Di Federico, W. Teng, L. J. Durlofsky; under review).
 
 <p align="center">
-  <img src="./pics/workflow_mcmc_case88.gif?raw=true" width="100%"/>
+  <img src="./pics/workflow.gif?raw=true" width="100%"/>
 </p>
-<p align="center"><em>Latent-space data assimilation workflow (MCMC, Case 1): latent ξ → 3D-LDM → geomodel → flow surrogate → well rates, compared with observed data to update ξ</em></p>
+<p align="center"><em>Latent-space data assimilation workflow (MCMC, Case 1): latent Î¾ â†’ 3D-LDM â†’ geomodel â†’ flow surrogate â†’ well rates, compared with observed data to update Î¾</em></p>
 
 ## Summary
-We compare data assimilation (DA) algorithms for large 3D channelized geomodels (128×128×32, channel-levee-mud facies) with uncertain geological scenario parameters (mud fraction, channel orientation and width). Geomodels are parameterized with a pretrained 3D latent diffusion model (3D-LDM, [ldm_3d_geomodel](https://github.com/guidodf09/ldm_3d_geomodel)), which maps a 1024-dimensional Gaussian latent variable to a full facies model. DA is performed on the latent variable, so posterior geomodels are always geologically realistic.
+We compare data assimilation (DA) algorithms for large 3D channelized geomodels (128Ã—128Ã—32, channel-levee-mud facies) with uncertain geological scenario parameters (mud fraction, channel orientation and width). Geomodels are parameterized with a pretrained 3D latent diffusion model (3D-LDM, [ldm_3d_geomodel](https://github.com/guidodf09/ldm_3d_geomodel)), which maps a 1024-dimensional Gaussian latent variable to a full facies model. DA is performed on the latent variable, so posterior geomodels are always geologically realistic.
 
-Rigorous Monte Carlo sampling needs ~10⁵–10⁶ forward runs, so the numerical simulator is replaced by a fast CNN-LSTM flow surrogate (geomodel → 30 report times × 15 well rates, ~1 ms per run on a GPU). Surrogate error is estimated on its test set and added to the likelihood as a full covariance, `C_tot = C_d + C_surr`.
+Rigorous Monte Carlo sampling needs ~10âµâ€“10â¶ forward runs, so the numerical simulator is replaced by a fast CNN-LSTM flow surrogate (geomodel â†’ 30 report times Ã— 15 well rates, ~1 ms per run on a GPU). Surrogate error is estimated on its test set and added to the likelihood as a full covariance, `C_tot = C_d + C_surr`.
 
 Three algorithms run on this shared setup:
 - **ESMDA** (ensemble smoother with multiple data assimilation) with pseudo-optimal localization of the Kalman gain
@@ -20,7 +20,7 @@ Three algorithms run on this shared setup:
 ## Conclusions
 - All three methods preserve geological realism, thanks to the 3D-LDM parameterization.
 - MCMC and SMC agree closely with each other, for well rates, scenario parameters and spatial statistics.
-- Latent-space ESMDA *overestimates* posterior uncertainty: its P10–P90 well-rate ranges are ~2.3–2.9× wider, with higher data mismatch. Large ensembles, localization, more iterations and larger latent spaces do not fix this. This is the opposite of the classical ensemble-collapse problem.
+- Latent-space ESMDA *overestimates* posterior uncertainty: its P10â€“P90 well-rate ranges are ~2.3â€“2.9Ã— wider, with higher data mismatch. Large ensembles, localization, more iterations and larger latent spaces do not fix this. This is the opposite of the classical ensemble-collapse problem.
 - The likely cause is Kalman-gain updates acting through a highly nonlinear parameterization.
 - SMC combines ensemble-level parallelism with rigorous sampling, which makes it the recommended choice with deep-learning parameterizations, given a fast surrogate.
 
@@ -30,17 +30,17 @@ Three algorithms run on this shared setup:
   - `esmda.yaml`, `mcmc.yaml`, `smc.yaml`: method settings, merged on top of `base.yaml`
   - `surrogate_train.yaml`: surrogate training settings
 - `ldmda/`
-  - `ldm.py`: latent → geomodel (VAE + U-net + DDIM)
-  - `surrogate.py`: geomodel → well rates (CNN-LSTM + scalers)
+  - `ldm.py`: latent â†’ geomodel (VAE + U-net + DDIM)
+  - `surrogate.py`: geomodel â†’ well rates (CNN-LSTM + scalers)
   - `problem.py`: observations, forward model, Gaussian likelihood
   - `diagnostics.py`: Stan R-hat and bulk/tail ESS
   - `methods/`: `esmda.py`, `mcmc.py`, `smc.py`
 - `scripts/`
   - `compute_surrogate_error.py`: builds `C_surr` from the surrogate test set
   - `train_surrogate.py`: (re)trains the flow surrogate
-- `data/`: geomodel dataset, simulated rates, and true models/rates for Cases 1–3 (see `data/link_to_data.md`)
+- `data/`: geomodel dataset, simulated rates, and true models/rates for Cases 1â€“3 (see `data/link_to_data.md`)
 - `weights/`: trained VAE, U-net and surrogate (see `weights/link_to_models.md`)
-- `template_folder/`: simulation deck used to generate the training and true rates (`test.DATA`, `KR.INC`; 128×128×32 grid, 3 injectors, 6 producers, BHP control, 30 × 50-day report steps). `PERMX.INC` and `PORO.INC` are written per geomodel
+- `template_folder/`: simulation deck used to generate the training and true rates (`test.DATA`, `KR.INC`; 128Ã—128Ã—32 grid, 3 injectors, 6 producers, BHP control, 30 Ã— 50-day report steps). `PERMX.INC` and `PORO.INC` are written per geomodel
 - `run.py`: entry point
 
 ## Quick Start
@@ -106,7 +106,7 @@ Contact: gdifede@stanford.edu
   <img src="./pics/true_88_no_mud.jpg?raw=true" width="250"/>
   <img src="./pics/true_81_no_mud.jpg?raw=true" width="250"/>
   <img src="./pics/true_28_no_mud.jpg?raw=true" width="250"/>
-  <figcaption>Synthetic true models for Cases 1–3 (mud facies hidden), with injectors I1–I3 and producers P1–P6</figcaption>
+  <figcaption>Synthetic true models for Cases 1â€“3 (mud facies hidden), with injectors I1â€“I3 and producers P1â€“P6</figcaption>
 </figure>
 
 <figure style="text-align: center; margin-bottom: 100px;">
@@ -125,7 +125,7 @@ Contact: gdifede@stanford.edu
   <img src="./pics/rates_P1_OIL_comparison_hm_case88.jpg?raw=true" width="350"/>
   <img src="./pics/rates_P1_WAT_comparison_hm_case88.jpg?raw=true" width="350"/>
   <img src="./pics/rates_I3_WAT_comparison_hm_case88.jpg?raw=true" width="350"/>
-  <figcaption>Case 1 well rates: prior P10–P90 (gray), posterior P10–P90 for ESMDA (green), MCMC (blue) and SMC (purple), with observed (points) and true (red) data</figcaption>
+  <figcaption>Case 1 well rates: prior P10â€“P90 (gray), posterior P10â€“P90 for ESMDA (green), MCMC (blue) and SMC (purple), with observed (points) and true (red) data</figcaption>
 </figure>
 
 <figure style="text-align: center; margin-bottom: 100px;">
