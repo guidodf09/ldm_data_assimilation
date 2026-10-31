@@ -3,9 +3,9 @@
 Code for "Data assimilation for subsurface flow using latent diffusion model parameterization: performance of ensemble-Kalman and Monte Carlo techniques" (G. Di Federico, W. Teng, L. J. Durlofsky; under review).
 
 <p align="center">
-  <img src="./pics/hm_Field_oil_esmda_case88.gif?raw=true" width="280"/>
-  <img src="./pics/hm_Field_oil_mcmc_case88.gif?raw=true" width="280"/>
-  <img src="./pics/hm_Field_oil_smc_case88.gif?raw=true" width="280"/>
+  <img src="./pics/hm_Field_oil_esmda_case88.gif?raw=true" width="32%"/>
+  <img src="./pics/hm_Field_oil_mcmc_case88.gif?raw=true" width="32%"/>
+  <img src="./pics/hm_Field_oil_smc_case88.gif?raw=true" width="32%"/>
 </p>
 <p align="center"><em>Case 1 field oil rate history matching: ESMDA, MCMC and SMC (left to right)</em></p>
 
